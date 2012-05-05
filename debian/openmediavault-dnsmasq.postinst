@@ -27,6 +27,18 @@ set -e
 case "$1" in
     configure)
 
+    		########################################################################
+    		# Update file permissions.
+    		########################################################################
+    		echo "Updating permissions"
+    		omv_install_fixperms
+
+    		########################################################################
+    		# Install locale files.
+    		########################################################################
+    		echo "Install locale files ..."
+    		omv_install_locale
+
 	# Check for XML config
 	if ! omv_config_exists "//services/dnsmasq"; then
 		omv_config_add_element "//services" "dnsmasq" ""
@@ -95,9 +107,6 @@ case "$1" in
     if ! omv_config_exists "//services/dnsmasq/entries"; then
         omv_config_add_element "//services/dnsmasq" "entries" ""
     fi
-	
-	# Fix permissions
-	omv_install_fixperms
 	
 	# Reload rsyslogd so that it sees the new config file
 	/etc/init.d/rsyslog restart

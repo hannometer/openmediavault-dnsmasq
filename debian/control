@@ -1,0 +1,12 @@
+Source: openmediavault-dnsmasq
+Section: misc
+Priority: optional
+Maintainer: Ian Moore <imooreyahoo@gmail.com>
+Build-Depends: debhelper (>= 7 )
+Standards-Version: 3.6.10
+
+Package: openmediavault-dnsmasq
+Architecture: all
+Depends: openmediavault (>= 0.2.5.6), dnsmasq
+Description: OpenMediaVault dnsmasq (local DNS and DHCP server) plugin
+ Configure local DNS and DHCP through OpenMediaVault

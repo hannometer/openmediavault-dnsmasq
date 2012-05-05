@@ -62,16 +62,26 @@ class DNSMasqRpc extends OMVRpc {
 			}'
 			),
 			"getEntries"   => array(
-				'{"type":"integer"}', // start
-				'{"type":"integer"}', // count
-				'{' . $GLOBALS['OMV_JSONSCHEMA_SORTFIELD'] . '}', // sortField
-				'{' . $GLOBALS['OMV_JSONSCHEMA_SORTDIR'] . '}' // sortDir
+				'{
+					"type":"object",
+					"properties":{
+						"start":{"type":"integer"},
+						"limit":{' . $GLOBALS['OMV_JSONSCHEMA_COUNTFIELD'] . '},
+						"sortfield":{' . $GLOBALS['OMV_JSONSCHEMA_SORTFIELD'] . '},
+						"sortdir":{' . $GLOBALS['OMV_JSONSCHEMA_SORTDIR'] . '}
+					}
+				}'
 			),
 			"getLeaseList" => array(
-				'{"type":"integer"}', // start
-				'{"type":"integer"}', // count
-				'{' . $GLOBALS['OMV_JSONSCHEMA_SORTFIELD'] . '}', // sortField
-				'{' . $GLOBALS['OMV_JSONSCHEMA_SORTDIR'] . '}' // sortDir
+				'{
+					"type":"object",
+					"properties":{
+						"start":{"type":"integer"},
+						"limit":{' . $GLOBALS['OMV_JSONSCHEMA_COUNTFIELD'] . '},
+						"sortfield":{' . $GLOBALS['OMV_JSONSCHEMA_SORTFIELD'] . '},
+						"sortdir":{' . $GLOBALS['OMV_JSONSCHEMA_SORTDIR'] . '}
+					}
+				}'
 			),
 			"setEntry"     => array(
 				'{
@@ -86,10 +96,20 @@ class DNSMasqRpc extends OMVRpc {
 			}'
 			),
 			"getEntry"     => array(
-				'{' . $GLOBALS['OMV_JSONSCHEMA_UUID'] . '}'
+				'{
+					"type":"object",
+					"properties":{
+						"uuid":{' . $GLOBALS['OMV_JSONSCHEMA_UUID_UNDEFINED'] . '}
+					}
+				}'
 			),
 			"removeEntry"  => array(
-				'{' . $GLOBALS['OMV_JSONSCHEMA_UUID'] . '}'
+				'{
+					"type":"object",
+					"properties":{
+						"uuid":{' . $GLOBALS['OMV_JSONSCHEMA_UUID_UNDEFINED'] . '}
+					}
+				}'
 			)
 
 		);
@@ -277,7 +297,7 @@ class DNSMasqRpc extends OMVRpc {
 	 *
 	 * @return array list of Entries
 	 */
-	public function getEntries($start, $count, $sortField, $sortDir)
+	public function getEntries($data)
 	{
 
 		// Validation
@@ -286,7 +306,7 @@ class DNSMasqRpc extends OMVRpc {
 		$objects = $this->configGetList(self::xpathRoot . "/entries/entry");
 
 		// Filter result
-		return $this->applyFilter($objects, $start, $count, $sortField, $sortDir);
+		return $this->applyFilter($objects, $data['start'], $data['limit'], $data['sortfield'], $data['sortdir']);
 
 	}
 
@@ -475,7 +495,7 @@ class DNSMasqRpc extends OMVRpc {
 	 *
 	 * @return array list of leases
 	 */
-	public function getLeaseList($start, $count, $sortField, $sortDir)
+	public function getLeaseList($data)
 	{
 
 		// Validation
@@ -484,7 +504,7 @@ class DNSMasqRpc extends OMVRpc {
 		$objects = $this->getLeases(true);
 
 		// Filter result
-		return $this->applyFilter($objects, $start, $count, $sortField, $sortDir);
+		return $this->applyFilter($objects, $data['start'], $data['limit'], $data['sortfield'], $data['sortdir']);
 
 	}
 

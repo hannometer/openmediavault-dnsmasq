@@ -1,9 +1,10 @@
 Source: openmediavault-dnsmasq
 Section: misc
 Priority: optional
-Maintainer: Ian Moore <imooreyahoo@gmail.com>
+Maintainer: Marcel Beck <marcel.beck@mbeck.org>
 Build-Depends: debhelper (>= 7 )
 Standards-Version: 3.6.10
+Homepage: https://github.com/OMV-Plugins/openmediavault-dnsmasq
 
 Package: openmediavault-dnsmasq
 Architecture: all

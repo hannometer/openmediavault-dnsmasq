@@ -1,3 +1,9 @@
+openmediavault-dnsmasq (0.3) unstable; urgency=low
+
+  * OMV 0.3 Port
+
+ -- Marcel Beck <marcel.beck@mbeck.org>  Sat, 05 May 2012 19:32:42 +0200
+
 openmediavault-dnsmasq (0.2) unstable; urgency=low
 
   * Initial Import from http://code.google.com/p/omv-plugins

@@ -28,6 +28,8 @@
 	// require("js/omv/form/plugins/FieldInfo.js")
 	// require("js/omv/module/admin/Logs.js")
 	// require("js/omv/util/Format.js")
+	// require("js/omv/grid/TBarGridPanel.js")
+	// require("js/omv/CfgObjectDialog.js")
 
 Ext.ns("OMV.Module.Services");
 
@@ -458,7 +460,7 @@ Ext.extend(OMV.Module.Services.DNSMasqEntriesGridPanel, OMV.grid.TBarGridPanel, 
 
 	doDeletion:function (record)
 	{
-		OMV.Ajax.request(this.cbDeletionHdl, this, "dnsmasq", "removeEntry", [ record.get("uuid") ]);
+		OMV.Ajax.request(this.cbDeletionHdl, this, "dnsmasq", "removeEntry", {uuid:record.get("uuid") });
 	}
 
 

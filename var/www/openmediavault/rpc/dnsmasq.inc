@@ -266,11 +266,12 @@ class DNSMasqRpc extends OMVRpc {
 	 *
 	 * @param string $uuid configuration uuid of Entry
 	 */
-	public function removeEntry($uuid)
+	public function removeEntry($data)
 	{
-
 		// Validation
 		$this->_validate(__METHOD__, func_get_args());
+
+		$uuid = $data['uuid'];
 
 		// Get configuration object for notification
 		$object = $this->configGet(self::xpathRoot . "/entries/entry[uuid='{$uuid}']");
@@ -439,11 +440,13 @@ class DNSMasqRpc extends OMVRpc {
 	 *
 	 * @return array Entry configuration data
 	 */
-	public function getEntry($uuid)
+	public function getEntry($data)
 	{
 
 		// Validation
 		$this->_validate(__METHOD__, func_get_args());
+
+		$uuid = $data['uuid'];
 
 		// get existing Entry
 		return $this->configGet(self::xpathRoot . "/entries/entry[uuid='{$uuid}']");

@@ -160,17 +160,10 @@ class DNSMasqModule extends OMVModuleAbstract implements OMVINotifyListener, OMV
 	 */
 	function bindListeners(OMVNotifyDispatcher $dispatcher)
 	{
-
 		/* Update service if configuration has been modified */
-		$dispatcher->addListener(OMV_NOTIFY_MODIFY,
-														 "org.openmediavault.services.dnsmasq",
-														 array($this, "updateService"), 1);
+		$dispatcher->addListener(OMV_NOTIFY_MODIFY, "org.openmediavault.services.dnsmasq", array($this, "updateService"), 1);
 
-		$dispatcher->addListener(
-			OMV_NOTIFY_MODIFY | OMV_NOTIFY_DELETE | OMV_NOTIFY_CREATE,
-			"org.openmediavault.services.dnsmasq.entries.entry",
-			array($this, "updateEntry"), 1);
-
+		$dispatcher->addListener(OMV_NOTIFY_MODIFY | OMV_NOTIFY_DELETE | OMV_NOTIFY_CREATE, "org.openmediavault.services.dnsmasq.entries.entry", array($this, "updateEntry"), 1);
 	}
 
 }

@@ -761,7 +761,7 @@ OMV.Module.Diagnostics.LogPlugin.dnsmasq = function (config)
 				id       :"event"
 			}
 		],
-		rpcArgs  :"dnsmasq",
+		rpcArgs  :{ "id":"dnsmasq" },
 		rpcFields:[
 			{ name:"date" },
 			{ name:"event" }
@@ -799,7 +799,7 @@ OMV.Module.Diagnostics.LogPlugin.dnsmasqdhcp = function (config)
 				id       :"event"
 			}
 		],
-		rpcArgs  :"dnsmasq-dhcp",
+		rpcArgs  :{ "id":"dnsmasq-dhcp" },
 		rpcFields:[
 			{ name:"date" },
 			{ name:"event" }

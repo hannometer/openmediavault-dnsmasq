@@ -238,7 +238,7 @@ Ext.extend(OMV.Module.Services.DNSMasqSettingsPanel, OMV.FormPanelExt, {
 						width     :300,
 						value     :"",
 						plugins   :[ OMV.form.plugins.FieldInfo ],
-						infoText  :_("Separate multiple entries with commas")
+						infoText  :_("Separate multiple entries with commas.")
 					},
 					{
 						xtype     :"textfield",
@@ -248,7 +248,7 @@ Ext.extend(OMV.Module.Services.DNSMasqSettingsPanel, OMV.FormPanelExt, {
 						width     :300,
 						value     :"",
 						plugins   :[ OMV.form.plugins.FieldInfo ],
-						infoText  :_("Separate multiple entries with commas")
+						infoText  :_("Separate multiple entries with commas.")
 					},
 					{
 						xtype     :"textfield",

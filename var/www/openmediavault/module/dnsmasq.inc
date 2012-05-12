@@ -44,7 +44,6 @@ class DNSMasqModule extends OMVModuleAbstract implements OMVINotifyListener, OMV
 	 */
 	public function getStatus()
 	{
-
 		global $xmlConfig;
 
 		// Get the configuration object
@@ -60,7 +59,7 @@ class DNSMasqModule extends OMVModuleAbstract implements OMVINotifyListener, OMV
 		return array(
 			"name"    => $this->getName(),
 			"title"   => gettext("dnsmasq"),
-			"enabled" => !empty($object['enable']),
+			"enabled" => ! empty($object['enable']),
 			"running" => ($initd->status() == 0)
 		);
 	}
@@ -70,7 +69,6 @@ class DNSMasqModule extends OMVModuleAbstract implements OMVINotifyListener, OMV
 	 */
 	public function updateService($conf, $oldconf)
 	{
-
 		// Create dnsmasq config
 		$cmd = "sudo omv-mkconf dnsmasq 2>&1";
 		OMVUtil::exec($cmd, $output, $result);
@@ -106,7 +104,6 @@ class DNSMasqModule extends OMVModuleAbstract implements OMVINotifyListener, OMV
 	 */
 	public function updateEntry($conf, $oldconf)
 	{
-
 		global $xmlConfig;
 
 		// Create dnsmasq config

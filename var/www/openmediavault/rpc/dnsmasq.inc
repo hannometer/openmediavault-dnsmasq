@@ -37,7 +37,6 @@ class DNSMasqRpc extends OMVRpc {
 	{
 
 		$this->methodSchemata = array(
-
 			"set"          => array(
 				'{
 				"type":"object",
@@ -120,11 +119,9 @@ class DNSMasqRpc extends OMVRpc {
 	 */
 	public function __call($name, $args)
 	{
-
 		// Configuration methods
 		if (substr($name, 0, 6) == 'config')
 		{
-
 			// Correct method name
 			$name    = substr($name, 6);
 			$name[0] = strtolower($name[0]);
@@ -147,10 +144,10 @@ class DNSMasqRpc extends OMVRpc {
 					break;
 				case 'set':
 				case 'replace':
-				if ($object === false)
-				{
-					throw new OMVException(OMVErrorMsg::E_CONFIG_SET_OBJECT_FAILED);
-				}
+					if ($object === false)
+					{
+						throw new OMVException(OMVErrorMsg::E_CONFIG_SET_OBJECT_FAILED);
+					}
 					break;
 				default:
 					if (is_null($object))
@@ -158,9 +155,7 @@ class DNSMasqRpc extends OMVRpc {
 						throw new OMVException(OMVErrorMsg::E_CONFIG_GET_OBJECT_FAILED, $args[0]);
 					}
 			}
-
 			return $object;
-
 		}
 		throw new Exception("Method " . __CLASS__ . "::" . $name . " does not exist.");
 	}
@@ -170,10 +165,9 @@ class DNSMasqRpc extends OMVRpc {
 	 */
 	function _validate($mname = '', $args = array())
 	{
-
 		// Check permissions
 		$this->validateSession();
-		if (!$this->hasRole(OMV_ROLE_ADMINISTRATOR))
+		if (! $this->hasRole(OMV_ROLE_ADMINISTRATOR))
 		{
 			throw new OMVException(OMVErrorMsg::E_RPC_SERVICE_INVALID_PERMISSION);
 		}
@@ -193,7 +187,6 @@ class DNSMasqRpc extends OMVRpc {
 	 */
 	function get()
 	{
-
 		// Validation
 		$this->_validate();
 
@@ -210,7 +203,6 @@ class DNSMasqRpc extends OMVRpc {
 	 */
 	function set($data)
 	{
-
 		// Validation
 		$this->_validate(__METHOD__, func_get_args());
 
@@ -256,8 +248,7 @@ class DNSMasqRpc extends OMVRpc {
 
 		// Notify general configuration changes
 		$dispatcher = &OMVNotifyDispatcher::getInstance();
-		$dispatcher->notify(OMV_NOTIFY_MODIFY,
-												"org.openmediavault.services.dnsmasq", $object, $oldconf);
+		$dispatcher->notify(OMV_NOTIFY_MODIFY, "org.openmediavault.services.dnsmasq", $object, $oldconf);
 
 	}
 
@@ -284,8 +275,7 @@ class DNSMasqRpc extends OMVRpc {
 
 		// Notify configuration changes
 		$dispatcher = &OMVNotifyDispatcher::getInstance();
-		$dispatcher->notify(OMV_NOTIFY_DELETE,
-												"org.openmediavault.services.dnsmasq.entries.entry", $object, array());
+		$dispatcher->notify(OMV_NOTIFY_DELETE, "org.openmediavault.services.dnsmasq.entries.entry", $object, array());
 	}
 
 	/**
@@ -300,7 +290,6 @@ class DNSMasqRpc extends OMVRpc {
 	 */
 	public function getEntries($data)
 	{
-
 		// Validation
 		$this->_validate(__METHOD__, func_get_args());
 
@@ -308,7 +297,6 @@ class DNSMasqRpc extends OMVRpc {
 
 		// Filter result
 		return $this->applyFilter($objects, $data['start'], $data['limit'], $data['sortfield'], $data['sortdir']);
-
 	}
 
 	/**
@@ -318,7 +306,6 @@ class DNSMasqRpc extends OMVRpc {
 	 */
 	public function setEntry($data)
 	{
-
 		// Validation
 		$this->_validate(__METHOD__, func_get_args());
 
@@ -328,14 +315,14 @@ class DNSMasqRpc extends OMVRpc {
 
 		foreach (array('mac', 'cnames', 'name') as $k)
 		{
-			if (!empty($k))
+			if (! empty($k))
 			{
 				$object[$k] = strtolower($object[$k]);
 			}
 		}
 
 		// Check uniqueness
-		if (!empty($object['name']) && TRUE === $this->configExists(self::xpathRoot . "/entries/entry[name='{$object['name']}']"))
+		if (! empty($object['name']) && TRUE === $this->configExists(self::xpathRoot . "/entries/entry[name='{$object['name']}']"))
 		{
 			$ex = $this->configGet(self::xpathRoot . "/entries/entry[name='{$object['name']}']");
 			if ($ex['uuid'] != $object['uuid'] && $ex['ip'] == $data['ip'])
@@ -345,7 +332,7 @@ class DNSMasqRpc extends OMVRpc {
 		}
 
 		// Check uniqueness
-		if (!empty($data['mac']) && TRUE === $this->configExists(self::xpathRoot . "/entries/entry[ip='{$object['ip']}']"))
+		if (! empty($data['mac']) && TRUE === $this->configExists(self::xpathRoot . "/entries/entry[ip='{$object['ip']}']"))
 		{
 			$ex = $this->configGet(self::xpathRoot . "/entries/entry[ip='{$object['ip']}']");
 			if ($ex['uuid'] != $object['uuid'] && $ex['mac'] == $data['mac'])
@@ -355,16 +342,14 @@ class DNSMasqRpc extends OMVRpc {
 		}
 
 		// CNAMES must be unique
-		if (!empty($object['cnames']))
+		if (! empty($object['cnames']))
 		{
-
 			$cnames = str_replace(array(" ", "'", '"', '/', '\\'), '', trim($object['cnames']));
 			$cnames = preg_replace('/\s*,\s*/', ', ', $cnames);
 			$cnames = array_unique(explode(', ', $cnames));
 
 			foreach ($cnames as $cname)
 			{
-
 				// check for exact name
 				try
 				{
@@ -384,7 +369,6 @@ class DNSMasqRpc extends OMVRpc {
 
 				foreach ($exnames as $ex)
 				{
-
 					// Skip ourselves
 					if ($object['uuid'] == $ex['uuid'])
 					{
@@ -395,10 +379,8 @@ class DNSMasqRpc extends OMVRpc {
 					{
 						throw new Exception("An entry with the host name (or other names) '{$cname}' already exists.");
 					}
-
 				}
 			}
-
 			$object['cnames'] = implode(', ', $cnames);
 		}
 
@@ -407,30 +389,23 @@ class DNSMasqRpc extends OMVRpc {
 		// Set configuration data
 		if ($data['uuid'] == $GLOBALS['OMV_UUID_UNDEFINED'])
 		{
-
 			// Append object to configuration
 			$this->configSet(self::xpathRoot . "/entries", array("entry" => $object));
 
 		}
 		else
 		{
-
 			$oldconfig = $this->configGet(self::xpathRoot . "/entries/entry[uuid='{$data['uuid']}']");
 
 			// Update existing configuration object
 			$this->configReplace(self::xpathRoot . "/entries/entry[uuid='{$data['uuid']}']", $object);
-
 		}
-
 		// Save configuration
 		$this->configSave();
 
 		// Notify configuration changes
 		$dispatcher = &OMVNotifyDispatcher::getInstance();
-		$dispatcher->notify(($data['uuid'] == $GLOBALS['OMV_UUID_UNDEFINED']) ?
-													OMV_NOTIFY_CREATE : OMV_NOTIFY_MODIFY,
-												"org.openmediavault.services.dnsmasq.entries.entry", $object, $oldconfig);
-
+		$dispatcher->notify(($data['uuid'] == $GLOBALS['OMV_UUID_UNDEFINED']) ? OMV_NOTIFY_CREATE : OMV_NOTIFY_MODIFY, "org.openmediavault.services.dnsmasq.entries.entry", $object, $oldconfig);
 	}
 
 	/**
@@ -442,7 +417,6 @@ class DNSMasqRpc extends OMVRpc {
 	 */
 	public function getEntry($data)
 	{
-
 		// Validation
 		$this->_validate(__METHOD__, func_get_args());
 
@@ -450,7 +424,6 @@ class DNSMasqRpc extends OMVRpc {
 
 		// get existing Entry
 		return $this->configGet(self::xpathRoot . "/entries/entry[uuid='{$uuid}']");
-
 	}
 
 	/**
@@ -460,7 +433,6 @@ class DNSMasqRpc extends OMVRpc {
 	 */
 	public function getNetworks()
 	{
-
 		$this->_validate();
 
 		$ints = $this->configGetList("//system/network/interfaces/iface");
@@ -469,7 +441,7 @@ class DNSMasqRpc extends OMVRpc {
 		foreach ($ints as $i)
 		{
 
-			if (!($i['netmask'] && $i['address']))
+			if (! ($i['netmask'] && $i['address']))
 			{
 				continue;
 			}
@@ -500,7 +472,6 @@ class DNSMasqRpc extends OMVRpc {
 	 */
 	public function getLeaseList($data)
 	{
-
 		// Validation
 		$this->_validate(__METHOD__, func_get_args());
 
@@ -508,7 +479,6 @@ class DNSMasqRpc extends OMVRpc {
 
 		// Filter result
 		return $this->applyFilter($objects, $data['start'], $data['limit'], $data['sortfield'], $data['sortdir']);
-
 	}
 
 	/**
@@ -520,11 +490,10 @@ class DNSMasqRpc extends OMVRpc {
 	 */
 	public function getLeases($fromList = false)
 	{
-
 		$this->_validate();
 
 		// This may not exist if DHCP is not enabled
-		if (!intval($this->configGet(self::xpathRoot . '/dhcp-enable')))
+		if (! intval($this->configGet(self::xpathRoot . '/dhcp-enable')))
 		{
 			return array();
 		}
@@ -539,11 +508,11 @@ class DNSMasqRpc extends OMVRpc {
 
 		$exp = $name = $mac = $ip = '';
 
-		while (!feof($fp))
+		while (! feof($fp))
 		{
 
 			$line = trim(fgets($fp));
-			if (!$line)
+			if (! $line)
 			{
 				continue;
 			}
@@ -566,7 +535,7 @@ class DNSMasqRpc extends OMVRpc {
 
 			// No need to calculate time if this is not
 			// called from the Leases panel
-			if ($exp <= 0 || !$fromList)
+			if ($exp <= 0 || ! $fromList)
 			{
 				$exp = 'Expired';
 			}
@@ -598,17 +567,18 @@ class DNSMasqRpc extends OMVRpc {
 				$exp = implode(", ", $exp);
 			}
 
-			$leases[] = array('ip'  => $ip,
-												'mac' => $mac,
-												'name'=> $name,
-												'disp'=> $disp,
-												'exp' => $exp
+			$leases[] = array(
+				'ip'  => $ip,
+				'mac' => $mac,
+				'name'=> $name,
+				'disp'=> $disp,
+				'exp' => $exp
 			);
 
 		}
 
 		// Not called from getLeaseList, sort by display name
-		if (!$fromList)
+		if (! $fromList)
 		{
 			usort($leases, function($a, $b)
 			{
@@ -617,7 +587,5 @@ class DNSMasqRpc extends OMVRpc {
 		}
 
 		return $leases;
-
 	}
-
 }

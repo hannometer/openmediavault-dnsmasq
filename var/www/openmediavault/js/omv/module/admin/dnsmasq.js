@@ -43,8 +43,7 @@ OMV.NavigationPanelMgr.registerMenu("services", "dnsmasq", {
 /**
  * Main Settings panel
  */
-OMV.Module.Services.DNSMasqSettingsPanel = function (config)
-{
+OMV.Module.Services.DNSMasqSettingsPanel = function (config) {
 	var initialConfig = {
 		rpcService:"dnsmasq"
 	};
@@ -53,14 +52,12 @@ OMV.Module.Services.DNSMasqSettingsPanel = function (config)
 };
 
 Ext.extend(OMV.Module.Services.DNSMasqSettingsPanel, OMV.FormPanelExt, {
-	initComponent:function ()
-	{
+	initComponent:function () {
 		OMV.Module.Services.DNSMasqSettingsPanel.superclass.initComponent.apply(this, arguments);
 		this.on("load", this._updateFormFields, this);
 	},
 
-	getFormItems:function ()
-	{
+	getFormItems:function () {
 		return [
 			{
 				xtype   :"fieldset",
@@ -162,15 +159,15 @@ Ext.extend(OMV.Module.Services.DNSMasqSettingsPanel, OMV.FormPanelExt, {
 						displayField :"netid",
 						valueField   :"netid",
 						store        :new OMV.data.Store({
-																							 remoteSort:false,
-																							 proxy     :new OMV.data.DataProxy({"service":"dnsmasq", "method":"getNetworks"}),
-																							 reader    :new Ext.data.JsonReader({
-																																										idProperty:"netid",
-																																										fields    :[
-																																											{ name:"netid" }
-																																										]
-																																									})
-																						 })
+							remoteSort:false,
+							proxy     :new OMV.data.DataProxy({"service":"dnsmasq", "method":"getNetworks"}),
+							reader    :new Ext.data.JsonReader({
+								idProperty:"netid",
+								fields    :[
+									{ name:"netid" }
+								]
+							})
+						})
 					},
 					{
 						xtype     :"textfield",
@@ -207,18 +204,18 @@ Ext.extend(OMV.Module.Services.DNSMasqSettingsPanel, OMV.FormPanelExt, {
 						triggerAction:"all",
 						mode         :"local",
 						store        :new Ext.data.SimpleStore({
-																										 fields:[ "value", "text" ],
-																										 data  :[
-																											 ["1h", _("1 hour")],
-																											 ["3h", _("3 hours")],
-																											 ["6h", _("6 hours")],
-																											 ["12h", _("12 hours")],
-																											 ["24h", _("1 day")],
-																											 ["48h", _("2 days")],
-																											 ["96h", _("4 days")],
-																											 ["168h", _("1 week")]
-																										 ]
-																									 })
+							fields:[ "value", "text" ],
+							data  :[
+								["1h", _("1 hour")],
+								["3h", _("3 hours")],
+								["6h", _("6 hours")],
+								["12h", _("12 hours")],
+								["24h", _("1 day")],
+								["48h", _("2 days")],
+								["96h", _("4 days")],
+								["168h", _("1 week")]
+							]
+						})
 					},
 					{
 						xtype     :"textfield",
@@ -288,9 +285,7 @@ Ext.extend(OMV.Module.Services.DNSMasqSettingsPanel, OMV.FormPanelExt, {
 	/**
 	 * Private function to update the states of various form fields.
 	 */
-	_updateFormFields:function ()
-	{
-
+	_updateFormFields:function () {
 		// Enabled / disabled fields
 		var checked = this.findFormField("enable").checked;
 		var dhcpen = this.findFormField("dhcp-enable");
@@ -298,11 +293,9 @@ Ext.extend(OMV.Module.Services.DNSMasqSettingsPanel, OMV.FormPanelExt, {
 		this.findFormField("domain-name").allowBlank = !(checked);
 		var dchecked = dhcpen.checked;
 		var fields = ["network", "gateway", "first-ip", "last-ip"];
-		for (var i = 0; i < fields.length; i++)
-		{
+		for (var i = 0; i < fields.length; i++) {
 			this.findFormField(fields[i]).allowBlank = !dchecked;
-			if (!dchecked)
-			{
+			if (!dchecked) {
 				this.findFormField(fields[i]).clearInvalid();
 			}
 		}
@@ -336,50 +329,47 @@ Ext.extend(OMV.Module.Services.DNSMasqSettingsPanel, OMV.FormPanelExt, {
 			}
 		];
 
-		if (!dchecked)
-		{
+		if (!dchecked) {
 			colConfig.pop();
 		}
 		Ext.getCmp('DNSMasqEntriesGridPanel').getColumnModel().setConfig(colConfig);
 
 	}
-
 });
 
 /**
  *
  * Static entries grid
  */
-OMV.Module.Services.DNSMasqEntriesGridPanel = function (config)
-{
+OMV.Module.Services.DNSMasqEntriesGridPanel = function (config) {
 
 	var initialConfig = {
 		disabled         :true,
 		id               :'DNSMasqEntriesGridPanel',
 		hidePagingToolbar:false,
 		colModel         :new Ext.grid.ColumnModel({
-																								 columns:[
-																									 {
-																										 header   :_("Host Name"),
-																										 sortable :true,
-																										 dataIndex:"name"
-																									 },
-																									 {
-																										 header   :_("IP Address"),
-																										 sortable :true,
-																										 dataIndex:"ip"
-																									 },
-																									 {
-																										 header   :_("Other Names"),
-																										 sortable :true,
-																										 dataIndex:"cnames"
-																									 },
-																									 {
-																										 header  :_("MAC Address"),
-																										 sortable:true
-																									 }
-																								 ]
-																							 })
+			columns:[
+				{
+					header   :_("Host Name"),
+					sortable :true,
+					dataIndex:"name"
+				},
+				{
+					header   :_("IP Address"),
+					sortable :true,
+					dataIndex:"ip"
+				},
+				{
+					header   :_("Other Names"),
+					sortable :true,
+					dataIndex:"cnames"
+				},
+				{
+					header  :_("MAC Address"),
+					sortable:true
+				}
+			]
+		})
 	};
 	Ext.apply(initialConfig, config);
 	OMV.Module.Services.DNSMasqEntriesGridPanel.superclass.constructor.call(this, initialConfig);
@@ -387,91 +377,79 @@ OMV.Module.Services.DNSMasqEntriesGridPanel = function (config)
 
 Ext.extend(OMV.Module.Services.DNSMasqEntriesGridPanel, OMV.grid.TBarGridPanel, {
 
-	initComponent:function ()
-	{
+	initComponent:function () {
 		this.store = new OMV.data.Store({
-																			autoLoad  :false,
-																			remoteSort:false,
-																			proxy     :new OMV.data.DataProxy({"service":"dnsmasq", "method":"getEntries"}),
-																			reader    :new Ext.data.JsonReader({
-																																					 idProperty   :"uuid",
-																																					 totalProperty:"total",
-																																					 root         :"data",
-																																					 fields       :[
-																																						 { name:"uuid" },
-																																						 { name:"name" },
-																																						 { name:"cnames" },
-																																						 { name:"ip" },
-																																						 { name:"mac" }
-																																					 ]
-																																				 })
-																		});
+			autoLoad  :false,
+			remoteSort:false,
+			proxy     :new OMV.data.DataProxy({"service":"dnsmasq", "method":"getEntries"}),
+			reader    :new Ext.data.JsonReader({
+				idProperty   :"uuid",
+				totalProperty:"total",
+				root         :"data",
+				fields       :[
+					{ name:"uuid" },
+					{ name:"name" },
+					{ name:"cnames" },
+					{ name:"ip" },
+					{ name:"mac" }
+				]
+			})
+		});
 		OMV.Module.Services.DNSMasqEntriesGridPanel.superclass.initComponent.apply(this, arguments);
 	},
 
 	listeners:{
-		show:function ()
-		{
+		show:function () {
 			this.doLoad();
 		}
 	},
 
-	initToolbar:function ()
-	{
+	initToolbar:function () {
 		var tbar = OMV.Module.Services.DNSMasqEntriesGridPanel.superclass.initToolbar.apply(this);
 		return tbar;
 	},
 
-	cbAddBtnHdl:function ()
-	{
+	cbAddBtnHdl:function () {
 		var wnd = new OMV.Module.Services.DNSMasqEntryPropertyDialog({
-																																	 uuid     :OMV.UUID_UNDEFINED,
-																																	 listeners:{
-																																		 submit:function ()
-																																		 {
-																																			 this.doReload();
-																																		 },
-																																		 scope :this
-																																	 }
-																																 });
+			uuid     :OMV.UUID_UNDEFINED,
+			listeners:{
+				submit:function () {
+					this.doReload();
+				},
+				scope :this
+			}
+		});
 		wnd.show();
 	},
 
-	cbEditBtnHdl:function ()
-	{
+	cbEditBtnHdl:function () {
 		var record = this.getSelectionModel().getSelected();
 		var wnd = new OMV.Module.Services.DNSMasqEntryPropertyDialog({
-																																	 uuid     :record.get("uuid"),
-																																	 listeners:{
-																																		 submit:function ()
-																																		 {
-																																			 this.doReload();
-																																		 },
-																																		 scope :this
-																																	 }
-																																 });
+			uuid     :record.get("uuid"),
+			listeners:{
+				submit:function () {
+					this.doReload();
+				},
+				scope :this
+			}
+		});
 		wnd.show();
 	},
 
-	cbSelectionChangeHdl:function (model)
-	{
+	cbSelectionChangeHdl:function (model) {
 		OMV.Module.Services.DNSMasqEntriesGridPanel.superclass.cbSelectionChangeHdl.apply(this, arguments);
 	},
 
-	doDeletion:function (record)
-	{
+	doDeletion:function (record) {
 		OMV.Ajax.request(this.cbDeletionHdl, this, "dnsmasq", "removeEntry", {uuid:record.get("uuid") });
 	}
-
-
 });
 
 /**
  *
  * DHCP leases grid
  */
-OMV.Module.Services.DNSMasqLeasesGridPanel = function (config)
-{
+OMV.Module.Services.DNSMasqLeasesGridPanel = function (config) {
 
 	var initialConfig = {
 		id               :'DNSMasqLeasesGridPanel',
@@ -482,33 +460,33 @@ OMV.Module.Services.DNSMasqLeasesGridPanel = function (config)
 		hideRefresh      :false,
 		hidePagingToolbar:false,
 		colModel         :new Ext.grid.ColumnModel({
-																								 columns:[
-																									 {
-																										 header   :_("Computer Name"),
-																										 sortable :true,
-																										 dataIndex:"name",
-																										 id       :"name"
-																									 },
-																									 {
-																										 header   :_("IP Address"),
-																										 sortable :true,
-																										 dataIndex:"ip",
-																										 id       :"ip"
-																									 },
-																									 {
-																										 header   :_("MAC Address"),
-																										 sortable :true,
-																										 dataIndex:"mac",
-																										 id       :"mac"
-																									 },
-																									 {
-																										 header   :_("Expires"),
-																										 sortable :true,
-																										 dataIndex:"exp",
-																										 id       :"exp"
-																									 }
-																								 ]
-																							 })
+			columns:[
+				{
+					header   :_("Computer Name"),
+					sortable :true,
+					dataIndex:"name",
+					id       :"name"
+				},
+				{
+					header   :_("IP Address"),
+					sortable :true,
+					dataIndex:"ip",
+					id       :"ip"
+				},
+				{
+					header   :_("MAC Address"),
+					sortable :true,
+					dataIndex:"mac",
+					id       :"mac"
+				},
+				{
+					header   :_("Expires"),
+					sortable :true,
+					dataIndex:"exp",
+					id       :"exp"
+				}
+			]
+		})
 	};
 	Ext.apply(initialConfig, config);
 	OMV.Module.Services.DNSMasqLeasesGridPanel.superclass.constructor.call(this, initialConfig);
@@ -516,36 +494,33 @@ OMV.Module.Services.DNSMasqLeasesGridPanel = function (config)
 
 Ext.extend(OMV.Module.Services.DNSMasqLeasesGridPanel, OMV.grid.TBarGridPanel, {
 
-	initComponent:function ()
-	{
+	initComponent:function () {
 		this.store = new OMV.data.Store({
-																			autoLoad  :false,
-																			remoteSort:false,
-																			proxy     :new OMV.data.DataProxy({"service":"dnsmasq", "method":"getLeaseList"}),
-																			reader    :new Ext.data.JsonReader({
-																																					 idProperty   :"ip",
-																																					 totalProperty:"total",
-																																					 root         :"data",
-																																					 fields       :[
-																																						 { name:"name" },
-																																						 { name:"ip" },
-																																						 { name:"exp" },
-																																						 { name:"mac" }
-																																					 ]
-																																				 })
-																		});
+			autoLoad  :false,
+			remoteSort:false,
+			proxy     :new OMV.data.DataProxy({"service":"dnsmasq", "method":"getLeaseList"}),
+			reader    :new Ext.data.JsonReader({
+				idProperty   :"ip",
+				totalProperty:"total",
+				root         :"data",
+				fields       :[
+					{ name:"name" },
+					{ name:"ip" },
+					{ name:"exp" },
+					{ name:"mac" }
+				]
+			})
+		});
 		OMV.Module.Services.DNSMasqLeasesGridPanel.superclass.initComponent.apply(this, arguments);
 	},
 
 	listeners:{
-		show:function ()
-		{
+		show:function () {
 			this.doLoad();
 		}
 	},
 
-	initToolbar:function ()
-	{
+	initToolbar:function () {
 		var tbar = OMV.Module.Services.DNSMasqLeasesGridPanel.superclass.initToolbar.apply(this);
 		return tbar;
 	}
@@ -574,8 +549,7 @@ OMV.NavigationPanelMgr.registerPanel("services", "dnsmasq", {
 /**
  * Static entry property dialog
  */
-OMV.Module.Services.DNSMasqEntryPropertyDialog = function (config)
-{
+OMV.Module.Services.DNSMasqEntryPropertyDialog = function (config) {
 	var initialConfig = {
 		rpcService  :"dnsmasq",
 		rpcGetMethod:"getEntry",
@@ -586,49 +560,41 @@ OMV.Module.Services.DNSMasqEntryPropertyDialog = function (config)
 		height      :300
 	};
 	Ext.apply(initialConfig, config);
-	OMV.Module.Services.DNSMasqEntryPropertyDialog.superclass.constructor.call(
-					this, initialConfig);
+	OMV.Module.Services.DNSMasqEntryPropertyDialog.superclass.constructor.call(this, initialConfig);
 };
 
 Ext.extend(OMV.Module.Services.DNSMasqEntryPropertyDialog, OMV.CfgObjectDialog, {
-	initComponent:function ()
-	{
+	initComponent:function () {
 		OMV.Module.Services.DNSMasqEntryPropertyDialog.superclass.initComponent.apply(this, arguments);
 	},
 
 	// Override validation
-	isValid      :function ()
-	{
+	isValid      :function () {
 
-		if (OMV.Module.Services.DNSMasqEntryPropertyDialog.superclass.isValid.call(this))
-		{
+		if (OMV.Module.Services.DNSMasqEntryPropertyDialog.superclass.isValid.call(this)) {
 
 			var values = this.getValues();
 
-			if (!(values['name'] || values['mac']))
-			{
+			if (!(values['name'] || values['mac'])) {
 				OMV.MessageBox.error(null, _("This entry is useless without specifying a Host Name or MAC address."));
 				return false;
 			}
 
 		}
-		else
-		{
+		else {
 			return false;
 		}
 
 		return true;
 	},
 
-	getFormConfig:function ()
-	{
+	getFormConfig:function () {
 		return {
 			autoHeight:true
 		};
 	},
 
-	getFormItems:function ()
-	{
+	getFormItems:function () {
 		return [
 			{
 				html:_("To create a DNS entry, specify IP address and Host Name. Optionally, you may enter other names which  the host should be known as.<br /><br />")
@@ -646,7 +612,7 @@ Ext.extend(OMV.Module.Services.DNSMasqEntryPropertyDialog, OMV.CfgObjectDialog, 
 				allowBlank:(!Ext.getCmp('DNSMasqLeasesGridPanel').disabled),
 				plugins   :[ OMV.form.plugins.FieldInfo ],
 				infoText  :(Ext.getCmp('DNSMasqLeasesGridPanel').disabled ? '' :
-										_("If this field is left blank, the host name will be obtained from the client's DHCP request. Beware that not all clients send their host name."))
+								_("If this field is left blank, the host name will be obtained from the client's DHCP request. Beware that not all clients send their host name."))
 			},
 			{
 				xtype     :"textfield",
@@ -689,26 +655,25 @@ Ext.extend(OMV.Module.Services.DNSMasqEntryPropertyDialog, OMV.CfgObjectDialog, 
 				displayField :"disp",
 				valueField   :"mac",
 				listeners    :{
-					select:function (a, b, c)
-					{
+					select:function (a, b, c) {
 						this.ownerCt.getComponent('ip').setValue(b.data.ip);
 						this.ownerCt.getComponent('mac').setValue(b.data.mac);
 						this.ownerCt.getComponent('name').setValue(b.data.name);
 					}
 				},
 				store        :new OMV.data.Store({
-																					 remoteSort:false,
-																					 proxy     :new OMV.data.DataProxy({"service":"dnsmasq", "method":"getLeases"}),
-																					 reader    :new Ext.data.JsonReader({
-																																								idProperty:"mac",
-																																								fields    :[
-																																									{ name:"ip" },
-																																									{ name:"mac" },
-																																									{ name:"name" },
-																																									{ name:"disp" }
-																																								]
-																																							})
-																				 })
+					remoteSort:false,
+					proxy     :new OMV.data.DataProxy({"service":"dnsmasq", "method":"getLeases"}),
+					reader    :new Ext.data.JsonReader({
+						idProperty:"mac",
+						fields    :[
+							{ name:"ip" },
+							{ name:"mac" },
+							{ name:"name" },
+							{ name:"disp" }
+						]
+					})
+				})
 			}
 		];
 	}
@@ -719,15 +684,13 @@ Ext.extend(OMV.Module.Services.DNSMasqEntryPropertyDialog, OMV.CfgObjectDialog, 
  */
 Ext.apply(Ext.form.VTypes, {
 
-	dnsmasqhostname    :function (v)
-	{
+	dnsmasqhostname    :function (v) {
 		return /^[a-zA-Z]([-a-zA-Z0-9]){0,61}[a-zA-Z0-9]$/.test(v);
 	},
 	dnsmasqhostnameText:_("Invalid hostname"),
 	dnsmasqhostnameMask:/[a-z0-9\-]/i,
 
-	dnsmasqcnames    :function (v)
-	{
+	dnsmasqcnames    :function (v) {
 		return /^([a-zA-Z]([-a-zA-Z0-9]){0,61}[a-zA-Z0-9]\s*,\s*)*\s*[a-zA-Z]([-a-zA-Z0-9]){0,61}[a-zA-Z0-9]\s*$/.test(v);
 	},
 	dnsmasqcnamesText:_("Invalid hostname"),
@@ -740,8 +703,7 @@ Ext.apply(Ext.form.VTypes, {
  * @derived OMV.Module.Diagnostics.LogPlugin
  * Class that implements the 'dnsmasq' log file diagnostics plugin
  */
-OMV.Module.Diagnostics.LogPlugin.dnsmasq = function (config)
-{
+OMV.Module.Diagnostics.LogPlugin.dnsmasq = function (config) {
 	var initialConfig = {
 		title    :_("Local DNS"),
 		stateId  :"c9d06952-00da-11e1-aa29-dnsmasq",
@@ -778,8 +740,7 @@ OMV.preg("log", "dnsmasq", OMV.Module.Diagnostics.LogPlugin.dnsmasq);
  * @derived OMV.Module.Diagnostics.LogPlugin
  * Class that implements the 'dnsmasq-dhcp' log file diagnostics plugin
  */
-OMV.Module.Diagnostics.LogPlugin.dnsmasqdhcp = function (config)
-{
+OMV.Module.Diagnostics.LogPlugin.dnsmasqdhcp = function (config) {
 	var initialConfig = {
 		title    :_("DHCP"),
 		stateId  :"c9d06952-00da-11e1-aa29-dnsmasq-dhcp",

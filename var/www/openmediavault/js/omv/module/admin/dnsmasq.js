@@ -260,24 +260,19 @@ Ext.extend(OMV.Module.Services.DNSMasqSettingsPanel, OMV.FormPanelExt, {
 				]
 			},
 			{
-				xtype:"fieldset",
-				title:_("Extra Options"),
-				items:[
-					{
-						xtype     :"textfield",
-						name      :"extraoptions",
-						hideLabel :true,
-						allowBlank:true,
-						autoCreate:{
-							tag         :"textarea",
-							autocomplete:"off",
-							rows        :"5",
-							cols        :"80"
-						},
-						plugins   :[ OMV.form.plugins.FieldInfo ],
-						infoText  :_("Extra options for dnsmasq configuration file.")
-					}
-				]
+				xtype     :"textfield",
+				name      :"extraoptions",
+				fieldLabel:_("Extra options"),
+				hideLabel :true,
+				allowBlank:true,
+				autoCreate:{
+					tag         :"textarea",
+					autocomplete:"off",
+					rows        :"5",
+					cols        :"80"
+				},
+				plugins   :[ OMV.form.plugins.FieldInfo ],
+				infoText  :_("Extra options for dnsmasq configuration file.")
 			}
 		];
 	},

@@ -44,69 +44,73 @@ case "$1" in
 			omv_config_add_element "//services" "dnsmasq" ""
 		fi
 
-			if ! omv_config_exists "//services/dnsmasq/dhcp-enable"; then
-					omv_config_add_element "//services/dnsmasq" "dhcp-enable" "0"
-			fi
+		if ! omv_config_exists "//services/dnsmasq/dhcp-enable"; then
+				omv_config_add_element "//services/dnsmasq" "dhcp-enable" "0"
+		fi
 
-			if ! omv_config_exists "//services/dnsmasq/extraoptions"; then
-					omv_config_add_element "//services/dnsmasq" "extraoptions" ""
-			fi
+		if ! omv_config_exists "//services/dnsmasq/extraoptions"; then
+				omv_config_add_element "//services/dnsmasq" "extraoptions" ""
+		fi
 
-			if ! omv_config_exists "//services/dnsmasq/domain-name"; then
-					omv_config_add_element "//services/dnsmasq" "domain-name" "local"
-			fi
+		if ! omv_config_exists "//services/dnsmasq/domain-name"; then
+				omv_config_add_element "//services/dnsmasq" "domain-name" "local"
+		fi
 
-			if ! omv_config_exists "//services/dnsmasq/network"; then
-					omv_config_add_element "//services/dnsmasq" "network" ""
-			fi
+		if ! omv_config_exists "//services/dnsmasq/network"; then
+				omv_config_add_element "//services/dnsmasq" "network" ""
+		fi
 
-			if ! omv_config_exists "//services/dnsmasq/gateway"; then
-					omv_config_add_element "//services/dnsmasq" "gateway" ""
-			fi
+		if ! omv_config_exists "//services/dnsmasq/gateway"; then
+				omv_config_add_element "//services/dnsmasq" "gateway" ""
+		fi
 
-			if ! omv_config_exists "//services/dnsmasq/first-ip"; then
-					omv_config_add_element "//services/dnsmasq" "first-ip" ""
-			fi
+		if ! omv_config_exists "//services/dnsmasq/first-ip"; then
+				omv_config_add_element "//services/dnsmasq" "first-ip" ""
+		fi
 
-			if ! omv_config_exists "//services/dnsmasq/last-ip"; then
-					omv_config_add_element "//services/dnsmasq" "last-ip" ""
-			fi
+		if ! omv_config_exists "//services/dnsmasq/last-ip"; then
+				omv_config_add_element "//services/dnsmasq" "last-ip" ""
+		fi
 
-			if ! omv_config_exists "//services/dnsmasq/default-lease-time"; then
-					omv_config_add_element "//services/dnsmasq" "default-lease-time" "168h"
-			fi
+		if ! omv_config_exists "//services/dnsmasq/default-lease-time"; then
+				omv_config_add_element "//services/dnsmasq" "default-lease-time" "168h"
+		fi
 
-			if ! omv_config_exists "//services/dnsmasq/wins-servers"; then
-					omv_config_add_element "//services/dnsmasq" "wins-servers" ""
-			fi
+		if ! omv_config_exists "//services/dnsmasq/wins-servers"; then
+				omv_config_add_element "//services/dnsmasq" "wins-servers" ""
+		fi
 
-			if ! omv_config_exists "//services/dnsmasq/ntp-servers"; then
-					omv_config_add_element "//services/dnsmasq" "ntp-servers" ""
-			fi
+		if ! omv_config_exists "//services/dnsmasq/ntp-servers"; then
+				omv_config_add_element "//services/dnsmasq" "ntp-servers" ""
+		fi
 
-			if ! omv_config_exists "//services/dnsmasq/bootfile"; then
-					omv_config_add_element "//services/dnsmasq" "bootfile" ""
-			fi
+		if ! omv_config_exists "//services/dnsmasq/bootfile"; then
+				omv_config_add_element "//services/dnsmasq" "bootfile" ""
+		fi
 
-			if ! omv_config_exists "//services/dnsmasq/dns-log-queries"; then
-					omv_config_add_element "//services/dnsmasq" "dns-log-queries" "0"
-			fi
+		if ! omv_config_exists "//services/dnsmasq/dns-log-queries"; then
+				omv_config_add_element "//services/dnsmasq" "dns-log-queries" "0"
+		fi
 
-			if ! omv_config_exists "//services/dnsmasq/log-dhcp"; then
-					omv_config_add_element "//services/dnsmasq" "log-dhcp" "0"
-			fi
+		if ! omv_config_exists "//services/dnsmasq/log-dhcp"; then
+				omv_config_add_element "//services/dnsmasq" "log-dhcp" "0"
+		fi
 
-			if ! omv_config_exists "//services/dnsmasq/dns-wins"; then
-					omv_config_add_element "//services/dnsmasq" "dns-wins" "0"
-			fi
+		if ! omv_config_exists "//services/dnsmasq/dns-wins"; then
+				omv_config_add_element "//services/dnsmasq" "dns-wins" "0"
+		fi
 
-			if ! omv_config_exists "//services/dnsmasq/enable"; then
-					omv_config_add_element "//services/dnsmasq" "enable" "0"
-			fi
+		if ! omv_config_exists "//services/dnsmasq/enable"; then
+				omv_config_add_element "//services/dnsmasq" "enable" "0"
+		fi
 
-			if ! omv_config_exists "//services/dnsmasq/entries"; then
-					omv_config_add_element "//services/dnsmasq" "entries" ""
-			fi
+		if ! omv_config_exists "//services/dnsmasq/entries"; then
+				omv_config_add_element "//services/dnsmasq" "entries" ""
+		fi
+
+		if ! omv_config_exists "//services/dnsmasq/dns-servers"; then
+				omv_config_add_element "//services/dnsmasq" "dns-servers" ""
+		fi
 
 		# Reload rsyslogd so that it sees the new config file
 		/etc/init.d/rsyslog restart

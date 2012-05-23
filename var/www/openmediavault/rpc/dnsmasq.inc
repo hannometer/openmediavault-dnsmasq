@@ -53,6 +53,7 @@ class DNSMasqRpc extends OMVRpc {
 					"ntp-servers":{"type":"string","optional":true},
 					"dns-domains":{"type":"string","optional":true},
 					"wins-servers":{"type":"string","optional":true},
+					"dns-servers":{"type":"string","optional":true},
 					"network":{"type":"string"},
 					"first-ip":{"type":"string"},
 					"last-ip":{"type":"string"},

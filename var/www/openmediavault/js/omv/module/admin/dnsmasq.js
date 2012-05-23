@@ -249,13 +249,23 @@ Ext.extend(OMV.Module.Services.DNSMasqSettingsPanel, OMV.FormPanelExt, {
 					},
 					{
 						xtype     :"textfield",
-						name      :"bootfile",
-						fieldLabel:_("TFTP Boot File"),
+						name      :"dns-servers",
+						fieldLabel:_("DNS Server(s)"),
 						allowBlank:true,
 						width     :300,
 						value     :"",
 						plugins   :[ OMV.form.plugins.FieldInfo ],
-						infoText  :_("If set, this file must exist on the TFTP share.")
+						infoText  :_("Separate multiple entries with commas.") + ' ' + _('If you only want to use this DNS Server, just enter the IP of this host.')
+					},
+					{
+						xtype     :"textfield",
+						name      :"bootfile",
+						fieldLabel:_("DHCP Boot"),
+						allowBlank:true,
+						width     :300,
+						value     :"",
+						plugins   :[ OMV.form.plugins.FieldInfo ],
+						infoText  :_("If set, this file must exist on the TFTP share. Example: /pxelinux.0,0.0.0.0")
 					}
 				]
 			},

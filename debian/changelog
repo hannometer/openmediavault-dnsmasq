@@ -1,3 +1,12 @@
+openmediavault-dnsmasq (0.3.1) unstable; urgency=low
+
+  * Github Issue Fix #1 - Translation
+  * Github Issue Fix #2 - Log error
+  * Github Issue Fix #3 - Add dhcp-option=6 (DNS Server)
+  * Github Issue Fix #4 - Extra Options Label
+
+ -- Marcel Beck <marcel.beck@mbeck.org>  Wed, 23 May 2012 18:13:39 +0200
+
 openmediavault-dnsmasq (0.3) unstable; urgency=low
 
   * OMV 0.3 Port

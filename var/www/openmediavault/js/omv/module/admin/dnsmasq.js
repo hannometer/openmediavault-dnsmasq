@@ -273,7 +273,6 @@ Ext.extend(OMV.Module.Services.DNSMasqSettingsPanel, OMV.FormPanelExt, {
 				xtype     :"textfield",
 				name      :"extraoptions",
 				fieldLabel:_("Extra options"),
-				hideLabel :true,
 				allowBlank:true,
 				autoCreate:{
 					tag         :"textarea",

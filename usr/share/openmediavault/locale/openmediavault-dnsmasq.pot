@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-dnsmasq\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-12 11:02+0200\n"
+"POT-Creation-Date: 2012-05-23 19:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,10 +53,16 @@ msgstr ""
 msgid "DHCP"
 msgstr ""
 
+msgid "DHCP Boot"
+msgstr ""
+
 msgid "DHCP Settings"
 msgstr ""
 
 msgid "DNS Search Domain(s)"
+msgstr ""
+
+msgid "DNS Server(s)"
 msgstr ""
 
 msgid "Date & Time"
@@ -77,7 +83,7 @@ msgstr ""
 msgid "Expires"
 msgstr ""
 
-msgid "Extra Options"
+msgid "Extra options"
 msgstr ""
 
 msgid "Extra options for dnsmasq configuration file."
@@ -101,7 +107,7 @@ msgstr ""
 msgid "IP Address"
 msgstr ""
 
-msgid "If set, this file must exist on the TFTP share."
+msgid "If set, this file must exist on the TFTP share. Example: /pxelinux.0,0.0.0.0"
 msgstr ""
 
 msgid "If this field is left blank, the host name will be obtained from the client's DHCP request. Beware that not all clients send their host name."
@@ -168,9 +174,6 @@ msgid "Specifying a MAC Address and IP Address will create a static IP DHCP entr
 msgstr ""
 
 msgid "Static Entries"
-msgstr ""
-
-msgid "TFTP Boot File"
 msgstr ""
 
 msgid "The local DNS server will respond to DNS queries for the hosts specified on the Static Entries tab, (optionally) hosts learned through OpenMediaVault's WINS server, and (optionally) DHCP clients that send their host name in DHCP requests. DNS requests for unknown hosts are forwarded to the OpenMediaVault's DNS servers as configured in System -> Network -> DNS Server.<br /><br />"

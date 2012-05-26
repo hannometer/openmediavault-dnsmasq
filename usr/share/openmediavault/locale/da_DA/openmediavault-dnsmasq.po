@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Raul Fernandez Garcia <raulfg3@gmail.com>, 2012.
+# Stefan Thrane Overby <stoverby@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: OMV Plugins\n"
@@ -11,47 +11,47 @@ msgstr ""
 "POT-Creation-Date: 2012-05-26 09:42+0200\n"
 "PO-Revision-Date: 2012-05-25 07:38+0000\n"
 "Last-Translator: Marcel Beck <fo3nik5@gmail.com>\n"
-"Language-Team: Spanish (Spain) (http://www.transifex.net/projects/p/OMVPlugins/language/es_ES/)\n"
+"Language-Team: Danish (http://www.transifex.net/projects/p/OMVPlugins/language/da/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es_ES\n"
+"Language: da\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 msgid "1 day"
-msgstr "1 día"
+msgstr "1 dag"
 
 msgid "1 hour"
-msgstr "1 hora"
+msgstr "1 time"
 
 msgid "1 week"
-msgstr "1 semana"
+msgstr "1 uge"
 
 msgid "12 hours"
-msgstr "12 horas"
+msgstr "12 timer"
 
 msgid "2 days"
-msgstr "2 días"
+msgstr "2 dage"
 
 msgid "3 hours"
-msgstr "3 horas"
+msgstr "3 timer"
 
 msgid "4 days"
-msgstr "4 días"
+msgstr "4 dage"
 
 msgid "6 hours"
-msgstr "6 horas"
+msgstr "6 timer"
 
 msgid "Add Static DNS and/or DHCP Entry"
-msgstr "Añadir DNS estática y/o DHCP"
+msgstr "Tilføj Statisk DNS og/eller DHCP indtastning"
 
 msgid "Computer Name"
-msgstr "Nombre del PC"
+msgstr "Computer Navn"
 
 msgid ""
 "Configures local DNS entries to contain the domain name above. Also sets the"
 " domain for DHCP clients."
-msgstr "Configura las entradas locales DNS para contener el nombre de dominio introducido. Tambien es utilizado para los clientes DHCP."
+msgstr "Konfigurerer lokale DNS-indtastninger til at indeholde domænenavnet ovenfor. Desuden sættes domænet for DHCP-klienter."
 
 msgid "DHCP"
 msgstr "DHCP"
@@ -60,55 +60,55 @@ msgid "DHCP Boot"
 msgstr ""
 
 msgid "DHCP Settings"
-msgstr "Opciones DHCP"
+msgstr "DHCP Indstillinger"
 
 msgid "DNS Search Domain(s)"
-msgstr "Dominios de busqueda DNS"
+msgstr "DNS Søge Domæne(r)"
 
 msgid "DNS Server(s)"
 msgstr ""
 
 msgid "Date & Time"
-msgstr "Fecha y Hora"
+msgstr "Dato & Tid"
 
 msgid "Domain Name"
-msgstr "Nombre del dominio"
+msgstr "Domæne Navn"
 
 msgid "Edit Static DNS and/or DHCP Entry"
-msgstr "Edita las DNS estaticas y / o entradas DHCP"
+msgstr "Rediger Statisk DNS og/eller DHCP indtastning"
 
 msgid "Enable"
-msgstr "Habilitar"
+msgstr "Aktiver"
 
 msgid "Event"
-msgstr "Evento"
+msgstr "Begivenhed"
 
 msgid "Expires"
-msgstr "Expiración"
+msgstr "Udløber"
 
 msgid "Extra options"
 msgstr ""
 
 msgid "Extra options for dnsmasq configuration file."
-msgstr "Opciones extras del archivo de configuración dnsmasq."
+msgstr "Ekstra valgmuligheder for dnsmasq konfigurationsfil."
 
 msgid "First IP address"
-msgstr "Primera IP"
+msgstr "Første IP adresse"
 
 msgid "For debugging purposes, log each DNS query"
-msgstr "Escribe en el log cada petición DNS (por motivos de depuración)"
+msgstr "I forbindelse med fejlfinding, så log hvert DNS-forespørgsel"
 
 msgid "Gateway"
 msgstr "Gateway"
 
 msgid "General"
-msgstr "General"
+msgstr "Genrel"
 
 msgid "Host Name"
-msgstr "Nombre del Host"
+msgstr "Vært Navn"
 
 msgid "IP Address"
-msgstr "Dirección IP"
+msgstr "IP Adresse"
 
 msgid ""
 "If set, this file must exist on the TFTP share. Example: /pxelinux.0,0.0.0.0"
@@ -117,75 +117,75 @@ msgstr ""
 msgid ""
 "If this field is left blank, the host name will be obtained from the "
 "client's DHCP request. Beware that not all clients send their host name."
-msgstr "Si este campo se deja en blanco, el nombre del host será obtenido via DHCP de los clientes. Tenga en cuenta que no todos los clientes envian su nombre de host"
+msgstr "Hvis feltet er står tomt, vil værtsnavnet hentes af klientens DHCP anmodning. Vær opmærksom på, at ikke alle klienter sender deres værtsnavn."
 
 msgid "Invalid hostname"
-msgstr "Nombre de Host inválido"
+msgstr "Ugyldig værtsnavn"
 
 msgid "Last IP address"
-msgstr "ltima IP"
+msgstr "Sidste IP adresse"
 
 msgid "Lease Network"
-msgstr "Red Lease"
+msgstr "Lease Netværk"
 
 msgid "Lease Time"
-msgstr "Tiempo Lease"
+msgstr "Lease Tid"
 
 msgid "Leases"
 msgstr "Leases"
 
 msgid "Local DNS"
-msgstr "DNS local"
+msgstr "Lokal DNS"
 
 msgid "Local DNS / DHCP"
-msgstr "DNS/DHCP Local"
+msgstr "Lokal DNS / DHCP"
 
 msgid "Log DHCP"
 msgstr "Log DHCP"
 
 msgid "Log Queries"
-msgstr "Graba las peticiones"
+msgstr "Log Forespørgsler"
 
 msgid "Log lots of extra information about DHCP transactions."
-msgstr "Graba toda la información posible en el log acerca de las transacciones DHCP"
+msgstr "Log masser af ekstra oplysninger om DHCP-transaktioner."
 
 msgid "MAC Address"
-msgstr "Direción MAC"
+msgstr "MAC Adresse"
 
 msgid "NTP Server(s)"
-msgstr "Servidor(es) NTP"
+msgstr "NTP Server(e)"
 
 msgid "Other Names"
-msgstr "Otros nombres"
+msgstr "Andre Navne"
 
 msgid ""
 "Other host names that should resolve to the specified IP address. Separate "
 "multiple entries with commas."
-msgstr "Otros nombres de host que pueden resolverse con esta IP. Separados por coma \",\""
+msgstr "Andre værtsnavne, der skal løses til den angivne IP-adresse. Adskil flere angivelser med kommaer."
 
 msgid "Requires that Enable WINS server is set in Services -> SMB/CIFS"
-msgstr "Es necesario que esté habilitado el servidor WINS en Servicios -> SMB/CIFS"
+msgstr "Kræver at Aktiver WIN server er sat i Tjenester -> SMB / CIFS"
 
 msgid "Select a network ..."
-msgstr "Seleccionar una red ..."
+msgstr "Vælg et netværk ..."
 
 msgid "Select existing lease ..."
-msgstr "Selecionar lease existente ..."
+msgstr "Vælg eksisterende lease ..."
 
 msgid "Separate multiple entries with commas."
-msgstr "Separar multiples opciones por coma ','"
+msgstr "Adskil flere angivelser med kommaer."
 
 msgid "Settings"
-msgstr "Opciones"
+msgstr "Indstillinger"
 
 msgid ""
 "Specifying a MAC Address and IP Address will create a static IP DHCP "
 "entry.<br /><br />Entering all fields will create an all-in-one static ip "
 "reservation and DNS entry.<br /><br />"
-msgstr "Specifying a MAC Address and IP Address will create a static IP DHCP entry.<br /><br />Entering all fields will create an all-in-one static ip reservation and DNS entry.<br /><br />"
+msgstr "Ved at specifere en MAC-adresse og IP-adresse vil oprette en statisk IP DHCP angivelse.<br /><br /> Indtastning af alle felterne vil skabe en alt-i-en statisk ip reservation og DNS angivelse.<br /><br />"
 
 msgid "Static Entries"
-msgstr "Entradas estaticas"
+msgstr "Statiske Angivelser"
 
 msgid ""
 "The local DNS server will respond to DNS queries for the hosts specified on "
@@ -194,24 +194,24 @@ msgid ""
 " requests. DNS requests for unknown hosts are forwarded to the "
 "OpenMediaVault's DNS servers as configured in System -> Network -> DNS "
 "Server.<br /><br />"
-msgstr "El servidor local DNS responderá a las peticiones DNS de los host definidos en la pestaña \"estaticos\", (Opcionalmente) a los host descubiertos por el servidor WINS de OpenMediaVault's, y (opcionalmente) a los clientes DHCP que envien su nombre via DHCP . Las peticiones DNS de host desconocidos serán reenviadas a los servidores DNS configurados en: -> Network -> DNS Server.<br /><br />"
+msgstr "Den lokale DNS-server, vil reagere på DNS forespørgsler til de værter specificeret på Statiske Angivelser fanebladet, (valgfrit) værter lært gennem OpenMediaVaults WINS server, og (valgfrit), DHCP-klienter, der sender deres værtsnavn i DHCP-anmodninger. DNS anmodninger af ukendte værter bliver videresendt til OpenMediaVaults DNS-servere, som konfigureret i System -> Netværk -> DNS server <br /><br />"
 
 msgid "This entry is useless without specifying a Host Name or MAC address."
-msgstr "Esta entrada no tiene utilidad si no se especifica un nombre de host o una dirección MAC."
+msgstr "Denne angivelse er ubrugelig uden at specificere et Værts Navn eller en MAC-adresse."
 
 msgid ""
 "To create a DNS entry, specify IP address and Host Name. Optionally, you may"
 " enter other names which  the host should be known as.<br /><br />"
-msgstr "Para crear una entrada DNS, debe especificar la IP y el nombre del host. Opcionalmente puede introducir otros nombres para el host. <br />>br />"
+msgstr "For at oprette en DNS angivelse, skal du angive IP-adresse og Værts Navn. Eventuelt kan du indtaste andre navne  som værten skal være kendt som.<br /><br />"
 
 msgid "Use IP / name entries obtained through WINS server."
-msgstr "Usar IP /Nombre optenido de un servidor WINS"
+msgstr "Brug IP / navn angivelser opnået gennem WINS server."
 
 msgid "Use WINS entries"
-msgstr "Usar entradas WINS"
+msgstr "Brug WINS angivelser"
 
 msgid "WINS Server(s)"
-msgstr "Servidore(s) WINS"
+msgstr "WINS Server(e)"
 
 msgid "dnsmasq"
 msgstr "dnsmasq"

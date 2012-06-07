@@ -136,13 +136,14 @@ if [ "$(omv_config_get "//services/dnsmasq/dhcp-enable")" = "1" ]; then
 	# DHCP Server options
 	DNSDOMAINS=$(omv_config_get "//services/dnsmasq/dns-domains" | sed -e 's/\s*,\s*/,/g');
 	WINS=$(omv_config_get "//services/dnsmasq/wins-servers" | sed -e 's/\s*,\s*/,/g');
-	NTP=$(omv_config_get "//services/dnsmasq/ntp-servers" | sed -e 's/\s*,\s*/,/g')
+	NTP=$(omv_config_get "//services/dnsmasq/ntp-servers" | sed -e 's/\s*,\s*/,/g');
+	DNS=$(omv_config_get "//services/dnsmasq/dns-servers" | sed -e 's/\s*,\s*/,/g');
 
 	[ "${DNSDOMAINS}" != "" ] && echo "dhcp-option=option:domain-search,${DNSDOMAINS}" >> ${CONFIG}
 	[ "${DOMAIN}" != "" ] && echo "dhcp-option=15,\"$(echo ${DOMAIN} | sed -e 's/,/ /g')\"" >> ${CONFIG}
 	[ "${WINS}" != "" ] && echo "dhcp-option=44,${WINS}" >> ${CONFIG}
 	[ "${NTP}" != "" ] && echo "dhcp-option=option:ntp-server,${NTP}" >> ${CONFIG}
-	
+	[ "${DNS}" != "" ] && echo "dhcp-option=6,${DNS}" >> ${CONFIG}
 
 fi
 

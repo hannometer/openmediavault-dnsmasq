@@ -1,3 +1,25 @@
+openmediavault-dnsmasq (0.3.2) unstable; urgency=low
+
+	* Show extra options label
+	* Update locale
+
+ -- Marcel Beck <marcel.beck@mbeck.org>  Thu, 07 Jun 2012 20:11:50 +0200
+
+openmediavault-dnsmasq (0.3.1) unstable; urgency=low
+
+  * Github Issue Fix #1 - Translation
+  * Github Issue Fix #2 - Log error
+  * Github Issue Fix #3 - Add dhcp-option=6 (DNS Server)
+  * Github Issue Fix #4 - Extra Options Label
+
+ -- Marcel Beck <marcel.beck@mbeck.org>  Wed, 23 May 2012 18:13:39 +0200
+
+openmediavault-dnsmasq (0.3) unstable; urgency=low
+
+  * OMV 0.3 Port
+
+ -- Marcel Beck <marcel.beck@mbeck.org>  Sat, 05 May 2012 19:32:42 +0200
+
 openmediavault-dnsmasq (0.2) unstable; urgency=low
 
   * Initial Import from http://code.google.com/p/omv-plugins

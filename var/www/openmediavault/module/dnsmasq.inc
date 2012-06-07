@@ -44,7 +44,6 @@ class DNSMasqModule extends OMVModuleAbstract implements OMVINotifyListener, OMV
 	 */
 	public function getStatus()
 	{
-
 		global $xmlConfig;
 
 		// Get the configuration object
@@ -60,7 +59,7 @@ class DNSMasqModule extends OMVModuleAbstract implements OMVINotifyListener, OMV
 		return array(
 			"name"    => $this->getName(),
 			"title"   => gettext("dnsmasq"),
-			"enabled" => !empty($object['enable']),
+			"enabled" => ! empty($object['enable']),
 			"running" => ($initd->status() == 0)
 		);
 	}
@@ -70,7 +69,6 @@ class DNSMasqModule extends OMVModuleAbstract implements OMVINotifyListener, OMV
 	 */
 	public function updateService($conf, $oldconf)
 	{
-
 		// Create dnsmasq config
 		$cmd = "sudo omv-mkconf dnsmasq 2>&1";
 		OMVUtil::exec($cmd, $output, $result);
@@ -106,7 +104,6 @@ class DNSMasqModule extends OMVModuleAbstract implements OMVINotifyListener, OMV
 	 */
 	public function updateEntry($conf, $oldconf)
 	{
-
 		global $xmlConfig;
 
 		// Create dnsmasq config
@@ -160,17 +157,10 @@ class DNSMasqModule extends OMVModuleAbstract implements OMVINotifyListener, OMV
 	 */
 	function bindListeners(OMVNotifyDispatcher $dispatcher)
 	{
-
 		/* Update service if configuration has been modified */
-		$dispatcher->addListener(OMV_NOTIFY_MODIFY,
-														 "org.openmediavault.services.dnsmasq",
-														 array($this, "updateService"), 1);
+		$dispatcher->addListener(OMV_NOTIFY_MODIFY, "org.openmediavault.services.dnsmasq", array($this, "updateService"), 1);
 
-		$dispatcher->addListener(
-			OMV_NOTIFY_MODIFY | OMV_NOTIFY_DELETE | OMV_NOTIFY_CREATE,
-			"org.openmediavault.services.dnsmasq.entries.entry",
-			array($this, "updateEntry"), 1);
-
+		$dispatcher->addListener(OMV_NOTIFY_MODIFY | OMV_NOTIFY_DELETE | OMV_NOTIFY_CREATE, "org.openmediavault.services.dnsmasq.entries.entry", array($this, "updateEntry"), 1);
 	}
 
 }

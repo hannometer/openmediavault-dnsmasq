@@ -132,7 +132,7 @@ if [ "$(omv_config_get "//services/dnsmasq/dhcp-enable")" = "1" ]; then
 		-v "concat('dhcp-option=option:router,',gateway)" -n \
 		-o "dhcp-hostsfile=/etc/dnsmasq-dhcphosts" -n \
 		-n ${OMV_CONFIG_FILE} | xmlstarlet unesc >> ${CONFIG}
-	
+
 	# DHCP Server options
 	DNSDOMAINS=$(omv_config_get "//services/dnsmasq/dns-domains" | sed -e 's/\s*,\s*/,/g');
 	WINS=$(omv_config_get "//services/dnsmasq/wins-servers" | sed -e 's/\s*,\s*/,/g');
@@ -179,27 +179,27 @@ do
 	xmlstarlet sel -t -m "//services/dnsmasq/entries/entry[position()=${index}]" \
 		-i "name != ''" -i "ip != ''" -v "concat(ip,'	',name)" -b \
 		${OMV_CONFIG_FILE} >> ${TMPDNSHOSTS}
-	
+
 	# CNAMES
 	CHOST=$(omv_config_get "//services/dnsmasq/entries/entry[position()=${index}]/name")
 	if [ "${CHOST}" != "" ]; then
 		CNAMES=$(omv_config_get "//services/dnsmasq/entries/entry[position()=${index}]/cnames" | sed -e 's/\s*,\s*/\n/g')
 		for cname in $CNAMES; do
 			echo "cname=${cname},${CHOST}" >> ${CONFIG}
-			echo "cname=${cname}.${DOMAIN},${CHOST}" >> ${CONFIG}
+			echo "cname=${cname}.${DOMAIN},${CHOST}.${DOMAIN}" >> ${CONFIG}
 		done
 	fi
-	
+
 	# DHCP FILE
 	if [ "${DHCPENABLE}" = "1" ]; then
-	
+
 		xmlstarlet sel -t -m "//services/dnsmasq/entries/entry[position()=${index}]" \
 			-i "mac != ''" -i "ip != ''" -v "concat(mac, ',', ip)" -b \
 			${OMV_CONFIG_FILE} >> ${TMPDHCPHOSTS}
-		
+
 	fi
-	
-	
+
+
 	index=$(( ${index} - 1 ))
 
 done

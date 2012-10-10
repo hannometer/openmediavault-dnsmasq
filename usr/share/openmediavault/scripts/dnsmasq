@@ -117,6 +117,7 @@ xmlstarlet sel -t -m "//services/dnsmasq" \
     -i "dns-log-queries != 0" -o "log-queries" -n -b \
     -i "extraoptions != ''" -o "# Extra options" -n \
     -v "extraoptions" -n -b \
+    -o "" -n \
     ${OMV_CONFIG_FILE} >> ${CONFIG}
 
 ###############################

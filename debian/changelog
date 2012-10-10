@@ -1,3 +1,10 @@
+openmediavault-dnsmasq (0.4.2) stable; urgency=low
+
+  * Github Issue Fix #6 - Cannot Save - Fedaykin
+  * Github Issue Fix #7 - Fedaykin - Internal name resolution of static hosts completely broken
+
+ -- Marcel Beck <marcel.beck@mbeck.org>  Wed, 10 Oct 2012 21:49:25 +0200
+
 openmediavault-dnsmasq (0.4.1) stable; urgency=low
 
   * Github Issue Fix #5 - Name resolution with aliases

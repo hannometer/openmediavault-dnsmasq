@@ -93,7 +93,7 @@ class DNSMasqModule extends OMVModuleAbstract implements OMVINotifyListener, OMV
 		{
 
 			require_once(dirname(__FILE__) . '/smb.inc');
-			$smb = new SMBModule();
+			$smb = new OMVSMBModule();
 			$smb->updateService();
 		}
 

@@ -2,7 +2,7 @@ openmediavault-dnsmasq (0.4.3) stable; urgency=low
 
   * Fix Issue with SMB Module
 
- -- Marcel Beck <marcel.beck@mbeck.org>  Wed, 10 Oct 2012 21:49:25 +0200
+ -- Marcel Beck <marcel.beck@mbeck.org>  Fri, 12 Oct 2012 15:58:09 +0200
 
 openmediavault-dnsmasq (0.4.2) stable; urgency=low
 

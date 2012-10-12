@@ -1,3 +1,9 @@
+openmediavault-dnsmasq (0.4.3) stable; urgency=low
+
+  * Fix Issue with SMB Module
+
+ -- Marcel Beck <marcel.beck@mbeck.org>  Wed, 10 Oct 2012 21:49:25 +0200
+
 openmediavault-dnsmasq (0.4.2) stable; urgency=low
 
   * Github Issue Fix #6 - Cannot Save - Fedaykin

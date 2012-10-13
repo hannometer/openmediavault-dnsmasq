@@ -18,6 +18,7 @@
 # along with this file. If not, see <http://www.gnu.org/licenses/>.
 
 set -e
+set -x
 
 . /etc/default/openmediavault
 . /usr/share/openmediavault/scripts/helper-functions
@@ -193,11 +194,12 @@ do
 
 	# DHCP FILE
 	if [ "${DHCPENABLE}" = "1" ]; then
-
-		xmlstarlet sel -t -m "//services/dnsmasq/entries/entry[position()=${index}]" \
-			-i "mac != ''" -i "ip != ''" -v "concat(mac, ',', ip)" -b \
-			${OMV_CONFIG_FILE} >> ${TMPDHCPHOSTS}
-
+		MAC=$(omv_config_get "//services/dnsmasq/entries/entry[position()=${index}]/mac")
+		if [ "${MAC}" != "" ]; then
+			xmlstarlet sel -t -m "//services/dnsmasq/entries/entry[position()=${index}]" \
+				-i "mac != ''" -i "ip != ''" -v "concat(mac, ',', ip)" -b \
+				${OMV_CONFIG_FILE} >> ${TMPDHCPHOSTS}
+		fi
 	fi
 
 

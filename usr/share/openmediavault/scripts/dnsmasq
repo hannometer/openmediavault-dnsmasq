@@ -18,7 +18,6 @@
 # along with this file. If not, see <http://www.gnu.org/licenses/>.
 
 set -e
-set -x
 
 . /etc/default/openmediavault
 . /usr/share/openmediavault/scripts/helper-functions

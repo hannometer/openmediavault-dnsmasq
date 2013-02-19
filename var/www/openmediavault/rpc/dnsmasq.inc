@@ -91,7 +91,7 @@ class DNSMasqRpc extends OMVRpc {
 					"ip":{"type":"string","format":"regex","pattern":"\/^(([0-9]{1,3}\\\.){3}[0-9]{1,3}|)$\/i","optional":true},
 					"name":{"type":"string","optional":true},
 					"cnames":{"type":"string","optional":true},
-					"mac":{"type":"string","format":"regex","pattern":"\/^((([a-f0-9]{2}:){5}[a-f0-9]{2})|)$\/i","optional":true}
+					"mac":{"type":"string","format":"regex","pattern":"\/^(([a-f0-9]{2}:){5}[a-f0-9]{2})(,(([a-f0-9]{2}:){5}[a-f0-9]{2}))*$\/i","optional":true}
 				}
 			}'
 			),
